@@ -3,6 +3,10 @@ const cardsContainer = document.querySelector("#cards-container");
 const wrong = new Audio("./sound/wrong.mp3");
 const correct = new Audio("./sound/correct.mp3");
 
+const music = new Audio("./sound/music.mp3");
+music.play();
+
+
 // Create an array of card objects. Each card should have a value (or image) and a unique identifier.
 
 var cards = [
@@ -81,7 +85,7 @@ CardDivs.forEach((e) => {
               cards[IndexB].clicked = false;
             }
           })
-        }, 2000)
+        }, 1000)
 
         CardsClicked = []
       }
