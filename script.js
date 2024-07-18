@@ -74,14 +74,25 @@ CardDivs.forEach((e) => {
 
 
         setTimeout(() => {
-          console.log("timeout hit!")
           CardDivs.forEach((x)=> {
             if(x.getAttribute("index") == IndexA || x.getAttribute("index") == IndexB) {
               x.style.transform = "rotateY(360deg)"
+              cards[IndexA].clicked = false;
+              cards[IndexB].clicked = false;
             }
           })
         }, 2000)
+
+        CardsClicked = []
       }
+
+      if (cards[IndexA].name == cards[IndexB].name) {
+        correct.play();
+
+
+        CardsClicked = []
+      }
+
     }
   });
 });
