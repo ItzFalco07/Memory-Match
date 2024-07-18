@@ -1,6 +1,7 @@
 // game setup
 const cardsContainer = document.querySelector("#cards-container");
-var wrong = new Audio(".mp3");
+const wrong = new Audio("./sound/wrong.mp3");
+const correct = new Audio("./sound/correct.mp3");
 
 // Create an array of card objects. Each card should have a value (or image) and a unique identifier.
 
@@ -50,7 +51,6 @@ for (let i = 0; i < 12; i++) {
 
 // When a player clicks on a card, reveal the card by changing its state to "face up."
 
-//transform: rotate(180deg) for .card
 
 var CardsClicked = [];
 
@@ -71,6 +71,16 @@ CardDivs.forEach((e) => {
 
       if (cards[IndexA].name != cards[IndexB].name) {
         wrong.play();
+
+
+        setTimeout(() => {
+          console.log("timeout hit!")
+          CardDivs.forEach((x)=> {
+            if(x.getAttribute("index") == IndexA || x.getAttribute("index") == IndexB) {
+              x.style.transform = "rotateY(360deg)"
+            }
+          })
+        }, 2000)
       }
     }
   });
