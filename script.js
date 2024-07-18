@@ -4,18 +4,18 @@ const cardsContainer = document.querySelector("#cards-container");
 // Create an array of card objects. Each card should have a value (or image) and a unique identifier.
 
 var cards = [
-  { name: "apple1", image: "./images/apple.png" },
-  { name: "apple2", image: "./images/apple.png" },
-  { name: "banana1", image: "./images/banana.png" },
-  { name: "banana2", image: "./images/banana.png" },
-  { name: "grapes1", image: "./images/grapes.png" },
-  { name: "grapes2", image: "./images/grapes.png" },
-  { name: "mango1", image: "./images/mango.png" },
-  { name: "mango2", image: "./images/mango.png" },
-  { name: "orange1", image: "./images/orange.png" },
-  { name: "orange2", image: "./images/orange.png" },
-  { name: "watermelon1", image: "./images/watermelon.png" },
-  { name: "watermelon2", image: "./images/watermelon.png" },
+  { name: "apple1", image: "./images/apple.png", clicked: false},
+  { name: "apple2", image: "./images/apple.png", clicked: false},
+  { name: "banana1", image: "./images/banana.png", clicked: false },
+  { name: "banana2", image: "./images/banana.png", clicked: false },
+  { name: "grapes1", image: "./images/grapes.png", clicked: false },
+  { name: "grapes2", image: "./images/grapes.png", clicked: false },
+  { name: "mango1", image: "./images/mango.png", clicked: false },
+  { name: "mango2", image: "./images/mango.png", clicked: false },
+  { name: "orange1", image: "./images/orange.png", clicked: false },
+  { name: "orange2", image: "./images/orange.png", clicked: false },
+  { name: "watermelon1", image: "./images/watermelon.png", clicked: false },
+  { name: "watermelon2", image: "./images/watermelon.png", clicked: false },
 ];
 
 // Randomly shuffle the array to mix up the card positions.
@@ -53,22 +53,32 @@ for (let i = 0; i < 12; i++) {
 
 var CardsClicked = []
 
+
 const CardDivs = document.querySelectorAll(".card");
 
 CardDivs.forEach((e) => {
   e.addEventListener("click", function () {
     e.style.transform = "rotateY(180deg)";
-    CardsClicked.push( e.getAttribute('index'))
+
+    if(cards[e.getAttribute("index")].clicked == false) {
+      CardsClicked.push(e.getAttribute("index"));
+      cards[e.getAttribute("index")].clicked = true;
+    }
+
   });
 });
 
 // Keep track of the first and second card selected, If two cards are face up
 
-if(CardsClicked.length == 2) {
-    let IndexA = CardsClicked[0];
-    let IndexB = CardsClicked[1];
 
-    if(cards[IndexA].name !== cards[IndexB].name) {
-        console.log("both cards are not same!")
-    }
+
+if(CardsClicked.length == 2) {
+
+  console.log("2 cards clicked!")
+    // let IndexA = CardsClicked[0];
+    // let IndexB = CardsClicked[1];
+
+    // if(cards[IndexA].name != cards[IndexB].name) {
+    //     console.log("both cards are not same!")
+    // }
 }
