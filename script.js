@@ -4,7 +4,6 @@ const wrong = new Audio("./sound/wrong.mp3");
 const correct = new Audio("./sound/correct.mp3");
 
 const music = new Audio("./sound/music.mp3");
-music.play();
 
 
 // Create an array of card objects. Each card should have a value (or image) and a unique identifier.
@@ -46,9 +45,9 @@ var Index = -1;
 for (let i = 0; i < 12; i++) {
   Index++;
   cardsContainer.innerHTML += `
-    <div class="card" index="${Index}">
-        <img class="front" src= ${cards[Index].image} >
-        <img class="back" src="./images/unknown.png">
+    <div draggable="false" class="card" index="${Index}">
+        <img draggable="false" class="front" src= ${cards[Index].image} >
+        <img draggable="false" class="back" src="./images/unknown.png">
     </div>
     `;
 }
@@ -62,6 +61,8 @@ const CardDivs = document.querySelectorAll(".card");
 
 CardDivs.forEach((e) => {
   e.addEventListener("click", function () {
+    music.play();
+
     e.style.transform = "rotateY(180deg)";
 
     if (cards[e.getAttribute("index")].clicked == false) {
@@ -92,8 +93,6 @@ CardDivs.forEach((e) => {
 
       if (cards[IndexA].name == cards[IndexB].name) {
         correct.play();
-
-
         CardsClicked = []
       }
 
